@@ -1,0 +1,99 @@
+.detailed-view-con {
+  height: 100vh;
+}
+
+.main-detaield-viw_page-con {
+  height: 82vh;
+  background-color: #f5f7fa;
+  text-align: center;
+  padding-top: 20vh;
+}
+
+.main-con {
+  margin: auto;
+  width: 80%;
+  height: 95%;
+  background-color: #ffffff;
+  border-radius: 30px;
+}
+
+.image {
+  height: 25vh;
+  border-radius: 10px;
+  width: 12vw;
+}
+
+.detailed-con {
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  padding-top: 3vh;
+  padding-left: 15vw;
+  padding-bottom: 1vh;
+}
+
+.book-desc-con {
+  text-align: start;
+  margin-left: 15px;
+}
+
+.book-desc-con * {
+  margin: 10px;
+}
+
+.status {
+  color: #007bff;
+}
+
+.line {
+  width: 90%;
+
+  margin: auto;
+}
+
+.about-con {
+  text-align: start;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.about-con * {
+  padding: 5px;
+  margin-left: 50px;
+  width: 90%;
+}
+
+.about-con h1 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.actions-button {
+  padding: 8px;
+  color: white;
+  border-width: 0px;
+  border-radius: 5px;
+  margin-top: -2px;
+  cursor: pointer;
+}
+
+.first-button {
+  background-color: #007bff;
+  margin-left: -5px;
+}
+.second-button {
+  background-color: green;
+}
+
+.third-button {
+  background-color: red;
+}
+
+.orange-button {
+  background-color: rgb(96, 54, 41);
+}
+
+.first-line {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

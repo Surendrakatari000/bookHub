@@ -1,0 +1,17 @@
+.homepage-con {
+  background-color: #f5f7fa;
+  min-height: 82vh;
+  padding-top: 12vh;
+}
+
+.desc-con {
+  margin-left: 5%;
+  padding-top: 3%;
+}
+
+.heading-desc {
+  margin-bottom: 2%;
+}
+.para-desc {
+  font-size: 18px;
+}

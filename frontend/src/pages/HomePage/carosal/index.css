@@ -1,0 +1,100 @@
+.first-con {
+  background-color: rgb(39, 39, 193);
+}
+
+.first-con-1 {
+  background-color: green;
+}
+
+.carosal-container {
+  width: 90%;
+  margin: 24px auto;
+  min-height: 45vh;
+  max-height: 47vh;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+/* Let slick control widths; ensure slides are visible */
+
+.first-con,
+.first-con-1 {
+  min-height: 150px;
+  width: 100%;
+}
+
+.carosal-header-container {
+  display: flex;
+  margin-bottom: 2%;
+  justify-content: space-between;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.slider-container {
+  width: 90%;
+  height: 80%;
+  margin: 24px auto;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-family: "slick";
+  font-size: 20px;
+  line-height: 1;
+  opacity: 0.75;
+  color: grey;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.find-books-button {
+  background-color: #509beb;
+  color: white;
+  border-width: 0px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.book-con-carosel {
+  text-align: center;
+  padding-right: 10px;
+  padding-left: 10px;
+  color: black;
+}
+
+.books-heading-corosal {
+  margin-left: 1vw;
+}
+
+.image-book {
+  height: 30vh;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.book_author {
+  font-size: 12px;
+  text-align: center;
+}
+
+.book_title {
+  text-align: center;
+}
+
+/* Increase size of arrows */
+.slick-prev,
+.slick-next {
+  width: 20px; /* default is 30px */
+  height: 20px; /* default is 30px */
+  z-index: 1;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 30px; /* increase arrow icon size */
+  color: #cec7c7; /* arrow color */
+}

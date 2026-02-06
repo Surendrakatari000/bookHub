@@ -1,0 +1,12 @@
+.not-found-page-image {
+  height: 500px;
+  width: 500px;
+}
+
+.not-found-error-con {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 10vh;
+  max-height: 100vh;
+}

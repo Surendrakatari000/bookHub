@@ -1,0 +1,58 @@
+/* Styling for the Form inside Add/Edit Modals */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between form groups */
+}
+
+label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #6b7280; /* Cool gray */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #1f2937;
+  background-color: #f9fafb;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #3b82f6; /* Blue focus */
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+textarea {
+  resize: vertical; /* Allow vertical resizing only */
+  min-height: 100px;
+}
+
+/* Container for textareas if needed specifically */
+.textarea-con {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Button container inside the form */
+.button-model-con {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 15px;
+  border-top: 1px solid #f3f4f6;
+}

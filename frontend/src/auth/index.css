@@ -1,0 +1,487 @@
+/* html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.login-page-container {
+  display: flex;
+  width: 99vw;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: content-box;
+}
+.login-page-image {
+  width: 54%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+.login-page-details-container {
+  background-color: #f8fafc;
+  width: 46vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.main-form-con {
+  background-color: #ffffff;
+  height: 50%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-con {
+  margin-top: 5%;
+}
+
+.name-con {
+  margin-bottom: 3%;
+}
+
+.password-con {
+  margin-top: 6%;
+  margin-bottom: 6%;
+}
+
+input {
+
+  width: 17vw;
+  height: 24px;
+  padding-left: 5px;
+}
+
+.log-button {
+  height: 33px;
+  width: 17vw;
+  background-color: #4778f5;
+  border-width: 0px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.image-bookHub-logo {
+  margin-top: 13%;
+  height: 40px;
+  width: 120px;
+}
+
+#email,
+#username {
+  height: 35px;
+  width: 250px;
+  border-radius: 5px;
+  border-width: 1px;
+}
+
+#password {
+  height: 35px;
+  width: 250px;
+  border-radius: 5px;
+  border-width: 1px;
+}
+
+#username:focus,
+#password:focus {
+  outline: none;
+  border: 2px solid #4778f5;
+}
+
+.registeer-para {
+  margin-top: 10px;
+  margin-left: -30px;
+}
+
+.error-messeage {
+  color: red;
+  margin-top: 10px;
+  font-size: 20px;
+  margin-left: -30px;
+}
+
+
+
+.password-wrapper {
+  position: relative;
+  width: 280px;
+}
+
+.password-input {
+  width: 100%;
+   
+  font-size: 16px;
+}
+
+.toggle-btn {
+  position: absolute;
+  right: 40px;
+  top: 60%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  color: #007bff;
+}
+
+.inprocess-con {
+  text-align: center;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-top: 40px;
+}
+
+.inprocess-con * {
+  margin: 10px;
+  margin: auto;
+  padding-bottom: 15px;
+}
+
+.button-processing-card {
+  background-color: #abc5e1;
+  width: 300px;
+  height: 40px;
+  color: white;
+  border-width: 0px;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.image-tick-sucess-card {
+  height: 70px;
+}
+
+.sucess-card-main-con {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.sucess-card-main-con * {
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.button-sucess-card {
+  background-color: #509beb;
+  width: 300px;
+  height: 40px;
+  color: white;
+  border-width: 0px;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.mailSent-card {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.mailSent-card * {
+  padding-bottom: 15px;
+}
+
+.button-mailsent-card {
+  background-color: #509beb;
+  width: 300px;
+  height: 40px;
+  color: white;
+  border-width: 0px;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.sent-again-para {
+  margin-top: 5px;
+} */
+
+
+
+/* --- Global Resets & Typography --- */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: #f8fafc;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* --- Main Layout (Split Screen) --- */
+.login-page-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden; /* Prevents scrollbars */
+}
+
+/* Left Side - Image */
+.login-page-image {
+  flex: 1.2; /* Takes up 55-60% of screen */
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Right Side - Form Container */
+.login-page-details-container {
+  flex: 1; /* Takes up remaining space */
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 2rem;
+}
+
+/* --- Form Card --- */
+.main-form-con {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 400px; /* Limits width on large screens */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Stretches inputs to full width */
+}
+
+/* Logo */
+.image-bookHub-logo {
+  height: 50px;
+  width: auto;
+  margin-bottom: 2rem;
+  align-self: center;
+}
+
+/* Form Grouping */
+.form-con {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.name-con, 
+.password-con {
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+.password-con {
+  margin-top: 0; /* Resetting weird margin */
+}
+
+/* --- Inputs --- */
+label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 0.5rem;
+}
+
+#email,
+#username,
+#password {
+  width: 100%;
+  height: 44px; /* Taller inputs are easier to click */
+  padding: 0 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #1e293b;
+  transition: all 0.2s ease;
+  background-color: #f8fafc;
+}
+
+#username:focus,
+#password:focus,
+#email:focus {
+  outline: none;
+  border-color: #4778f5;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(71, 120, 245, 0.1); /* Glow effect */
+}
+
+/* --- Password Toggle --- */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.toggle-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #64748b;
+  font-size: 1.2rem;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.toggle-btn:hover {
+  color: #4778f5;
+}
+
+/* --- Buttons --- */
+.log-button {
+  width: 100%;
+  height: 44px;
+  background-color: #4778f5;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  margin-top: 10px;
+  box-shadow: 0 4px 6px -1px rgba(71, 120, 245, 0.2);
+}
+
+.log-button:hover {
+  background-color: #3b66d6;
+  transform: translateY(-1px);
+}
+
+.log-button:active {
+  transform: translateY(0);
+}
+
+/* --- Text & Links --- */
+.registeer-para {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-left: 0; /* Reset negative margin */
+}
+
+.registeer-para a {
+  color: #4778f5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.registeer-para a:hover {
+  text-decoration: underline;
+}
+
+.error-messeage {
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  text-align: left;
+  margin-left: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* --- Success / Process Cards --- */
+/* (Centering and styling these to look like pop-up cards) */
+
+.inprocess-con,
+.sucess-card-main-con,
+.mailSent-card {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.inprocess-con h1,
+.sucess-card-main-con h1, 
+.mailSent-card h1 {
+  font-size: 1.5rem;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+.button-processing-card,
+.button-sucess-card,
+.button-mailsent-card {
+  width: 100%;
+  height: 44px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.button-processing-card {
+  background-color: #cbd5e1;
+  color: #64748b;
+  cursor: not-allowed;
+}
+
+.button-sucess-card,
+.button-mailsent-card {
+  background-color: #4778f5;
+  color: white;
+}
+
+.image-tick-sucess-card {
+  height: 60px;
+  width: 60px;
+  margin-bottom: 20px;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .login-page-container {
+    flex-direction: column;
+  }
+
+  .login-page-image {
+    display: none; /* Hide image on mobile for cleaner look */
+    /* Alternatively: height: 200px; flex: none; width: 100%; */
+  }
+
+  .login-page-details-container {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .main-form-con {
+    max-width: 100%;
+  }
+}
