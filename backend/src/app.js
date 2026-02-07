@@ -11,22 +11,29 @@ const authMiddleware = require("./middleware/authMiddleware");
 const isAdmin = require("./middleware/isAdminMiddleware");
 
 const app = express();
+
 app.use(express.json());
 app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", process.env.CLIENT_URL],
     credentials: true,
-    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    allowedHeaders: ["Content-Type"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
 
+// 🔓 Public routes
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
+
 app.use("/auth", authRoutes);
+
+// 🔐 Protected routes
 app.use("/user-books", authMiddleware, bookRoutes);
-app.use("/", authMiddleware, globalRoute);
+app.use("/global", authMiddleware, globalRoute);
 app.use("/admin", authMiddleware, isAdmin, adminRoutes);
 
 module.exports = app;
