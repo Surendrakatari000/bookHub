@@ -84,7 +84,7 @@ const verifyEmail = async (req, res) => {
       .status(200)
       .cookie("token", jwtToken, {
         httpOnly: true,
-        secure: false, // true in production
+        secure: true, // true in production
         sameSite: "lax",
         maxAge: 7 * 24 * 60 * 60 * 1000,
       })
@@ -199,7 +199,7 @@ const login = async (req, res) => {
       .status(200)
       .cookie("token", jwtToken, {
         httpOnly: true, // JS can't access (secure)
-        secure: false, // true in production (HTTPS)
+        secure: true, // true in production (HTTPS)
         sameSite: "lax", // or "none" if cross-site
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
       })
@@ -220,7 +220,7 @@ const logout = (req, res) => {
   return res
     .clearCookie("token", {
       httpOnly: true,
-      secure: false, // true in production (HTTPS)
+      secure: true, // true in production (HTTPS)
       sameSite: "lax",
     })
     .status(200)
