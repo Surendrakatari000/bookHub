@@ -11,7 +11,7 @@ const GlobelBooks = () => {
 
   useEffect(() => {
     // const token = Cookies.get("token");
-    const url = "http://localhost:4073/books";
+    const url = "http://localhost:4073/global/books";
 
     fetch(url, {
       method: "GET",

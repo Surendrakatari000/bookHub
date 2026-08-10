@@ -1,5 +1,5 @@
 const getBooks = async () => {
-  const url = "http://localhost:4073/books";
+  const url = "http://localhost:4073/global/books";
 
   try {
     const response = await fetch(url, {
