@@ -16,7 +16,7 @@ const UserBooks = () => {
   const status = searchParams.get("status"); // want_to_read, completed, etc.
 
   useEffect(() => {
-    let url = `${API_URL}user-books`;
+    let url = `${API_URL}/user-books`;
 
     if (status) {
       url += `?status=${status}`;
