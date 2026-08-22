@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+const API_URL = import.meta.env.VITE_API_URL;
 
 import originalStatus from "../utils/statusUpdate";
 
@@ -10,7 +11,7 @@ export const updateStatusOfBook = async (id, updateSatusvalue) => {
       status: originalStatus(updateSatusvalue),
     };
     console.log(body);
-    const response = await fetch(`http://localhost:4073/user-books/${id}`, {
+    const response = await fetch(`${API_URL}/user-books/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +34,7 @@ export const deleteUserBook = async (id) => {
   // const token = Cookies.get("token");
 
   try {
-    const response = await fetch(`http://localhost:4073/user-books/${id}`, {
+    const response = await fetch(`${API_URL}/user-books/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -68,7 +69,7 @@ export const addUserBook = async (id, addStatus) => {
   };
   console.log(originalStatus(addStatus));
   try {
-    const response = await fetch(`http://localhost:4073/user-books`, {
+    const response = await fetch(`${API_URL}/user-books`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,4 +1,5 @@
 import "./AddBook.css";
+const API_URL = import.meta.env.VITE_API_URL;  
 
 const DeleteBook = ({ isOpen, onClose, book, onRefresh }) => {
   if (!isOpen || !book) return null;
@@ -6,7 +7,7 @@ const DeleteBook = ({ isOpen, onClose, book, onRefresh }) => {
   const handleDelete = async () => {
     try {
       const res = await fetch(
-        `http://localhost:4073/admin/delete-book/${book._id}`,
+        `${API_URL}/admin/delete-book/${book._id}`,
         {
           method: "DELETE",
           headers: {

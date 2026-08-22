@@ -5,6 +5,7 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 
 import SideImage from "./components/sideImage";
 import "./index.css";
+const API_URL = import.meta.env.VITE_API_URL;
 
 // ✅ 1. Define the Form component OUTSIDE the Login component
 const LoginForm = ({
@@ -86,7 +87,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:4073/auth/login", {
+      const response = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

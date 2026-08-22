@@ -1,5 +1,7 @@
+const API_URL = import.meta.env.VITE_API_URL;  
+
 const getBooks = async () => {
-  const url = "http://localhost:4073/global/books";
+  const url = `${API_URL}/global/books`;
 
   try {
     const response = await fetch(url, {

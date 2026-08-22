@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import BookModal from "../../components/model/Model";
 import "./AddBook.css";
+const API_URL = import.meta.env.VITE_API_URL;  
 
 const EditBook = ({ isOpen, onClose, bookToEdit, onRefresh }) => {
   const [bookDetails, setBookDetails] = useState({
@@ -24,7 +25,7 @@ const EditBook = ({ isOpen, onClose, bookToEdit, onRefresh }) => {
     e.preventDefault();
     try {
       const res = await fetch(
-        `http://localhost:4073/admin/edit-book/${bookToEdit._id}`,
+        `${API_URL}/admin/edit-book/${bookToEdit._id}`,
         {
           method: "PUT",
           headers: {

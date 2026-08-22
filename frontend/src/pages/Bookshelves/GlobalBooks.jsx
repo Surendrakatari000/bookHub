@@ -5,13 +5,14 @@ import "./index.css";
 import Cookies from "js-cookie";
 import SideBar from "./SideBar";
 import BooksBar from "./BookBar";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const GlobelBooks = () => {
   const [globalBooks, setglobalBooks] = useState(null);
 
   useEffect(() => {
     // const token = Cookies.get("token");
-    const url = "http://localhost:4073/global/books";
+    const url = `${API_URL}/global/books`;
 
     fetch(url, {
       method: "GET",

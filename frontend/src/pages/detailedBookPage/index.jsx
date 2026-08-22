@@ -7,6 +7,7 @@ import {
   deleteUserBook,
   addUserBook,
 } from "../../services/book_api";
+const API_URL = import.meta.env.VITE_API_URL;
 
 import "./index.css";
 import { useEffect, useState } from "react";
@@ -21,7 +22,7 @@ const DetailedViewPage = () => {
 
   const fetchBookById = async () => {
     try {
-      const response = await fetch(`http://localhost:4073/user-books/${id}`, {
+      const response = await fetch(`${API_URL}/user-books/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

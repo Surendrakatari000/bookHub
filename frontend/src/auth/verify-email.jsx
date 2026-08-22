@@ -5,6 +5,8 @@ import { AuthContext } from "../context/islogged";
 import { useState, useEffect, useContext } from "react";
 import { Oval } from "react-loader-spinner";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const InProcess = () => (
   <div className="inprocess-con">
     <Oval color="#509beb" secondaryColor="#abc5e1" height={65} />
@@ -67,7 +69,7 @@ const VerifyMail = () => {
     const verifyEmail = async () => {
       try {
         const response = await fetch(
-          `http://localhost:4073/auth/verify-mail/${token}`,
+          `${API_URL}/auth/verify-mail/${token}`,
           { credentials: "include" },
         );
 

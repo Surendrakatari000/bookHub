@@ -12,13 +12,14 @@ const AddBook = ({ isOpen, onClose, onRefresh }) => {
     aboutAuthor: "",
   });
 
+const API_URL = import.meta.env.VITE_API_URL;  
   if (!isOpen) return null;
 
   const handleCreateBook = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:4073/admin/add-book", {
+      const res = await fetch(`${API_URL}/admin/add-book`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

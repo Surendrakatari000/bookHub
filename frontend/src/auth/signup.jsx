@@ -4,7 +4,7 @@ import { AuthContext } from "../context/islogged";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import SideImage from "./components/sideImage";
 import "./index.css";
-
+const API_URL = import.meta.env.VITE_API_URL;
 // -----------------------------------------------------------------------------
 // 1. SignUpForm Component
 // -----------------------------------------------------------------------------
@@ -107,7 +107,7 @@ const SentMailUI = ({ email }) => {
     setIsResending(true);
     setResendMessage(""); // Clear previous messages
     try {
-      const response = await fetch("http://localhost:4073/auth/resend-email", {
+      const response = await fetch(`${API_URL}/auth/resend-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -204,7 +204,7 @@ const Signup = () => {
     setIsSubmitting(true); // Start loading
 
     try {
-      const response = await fetch("http://localhost:4073/auth/signup", {
+      const response = await fetch(`${API_URL}/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userDetails),

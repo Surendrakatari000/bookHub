@@ -7,6 +7,8 @@ import { AuthContext } from "../../../context/islogged";
 
 import { useNavigate } from "react-router-dom";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Header = () => {
   const { isLoggedIn, setIsLoggedIn  , isAdmin} = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +20,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const logoutHandler = async () => {
-    await fetch("http://localhost:4073/auth/logout", {
+    await fetch(`${API_URL}/auth/logout`, {
       method: "POST",
       credentials: "include",
     });
