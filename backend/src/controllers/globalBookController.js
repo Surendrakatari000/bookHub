@@ -15,4 +15,19 @@ const getSuggestedBooks = async (req, res) => {
   }
 };
 
-module.exports = getSuggestedBooks;
+const getTopRatedBooks = async (req, res) => {
+  try {
+    const books = await Book.find({ rating: { $gt: 4 } }).sort({ rating: -1 });
+    res.status(200).json({
+      count: books.length,
+      data: books,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "internal server error",
+      error: error.message,
+    });
+  }
+};
+
+module.exports = { getSuggestedBooks, getTopRatedBooks };

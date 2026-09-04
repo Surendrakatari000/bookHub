@@ -59,18 +59,6 @@ const PrevArrow = (props) => {
 };
 
 const SimpleSlider = () => {
-  // const settings = {
-  //   dots: false,
-  //   infinite: true,
-  //   speed: 500,
-  //   slidesToShow: 3,
-  //   slidesToScroll: 1,
-  //   arrows: true,
-  //   autoplay: false,
-  //   autoplaySpeed: 1500,
-  //   pauseOnHover: true,
-  //   adaptiveHeight: true,
-  // };
   const settings = {
     dots: false,
     infinite: true,
@@ -85,30 +73,26 @@ const SimpleSlider = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
-  const url = "https://apis.ccbp.in/book-hub/top-rated-books";
 
-  const options = {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsIiwicm9sZSI6IlBSSU1FX1VTRVIiLCJpYXQiOjE2MTk2Mjg2MTN9.nZDlFsnSWArLKKeF0QbmdVfLgzUbx1BGJsqa2kc_21Y",
-    },
-  };
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const [topratedBooks, setTopratedBooks] = useState([]);
   const { isAdmin } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(url, options)
+    fetch(`${API_URL}/global/top-rated-books`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.books);
-        setTopratedBooks(data.books);
+        setTopratedBooks(data.data);
       })
       .catch((error) => console.error("Error:", error));
   }, []);
-  console.log(topratedBooks);
 
   return (
     <div className="carosal-container">
@@ -128,13 +112,13 @@ const SimpleSlider = () => {
       <div className="slider-container">
         <Slider {...settings}>
           {topratedBooks.map((book) => (
-            <Link to={`/books/${book.id}`} key={book.id} className="link-book">
-              <div className="book-con-carosel" key={book.id}>
+            <Link to={`/books/${book._id}`} key={book._id} className="link-book">
+              <div className="book-con-carosel" key={book._id}>
                 <div className="image-con">
-                  <img src={book.cover_pic} className="image-book" />
+                  <img src={book.coverPic} className="image-book" />
                 </div>
                 <h4 className="book_title">{book.title}</h4>
-                <p className="book_author">{book.author_name}</p>
+                <p className="book_author">{book.authorName}</p>
               </div>
             </Link>
           ))}
