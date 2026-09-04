@@ -97,3 +97,18 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.book-url-link {
+  display: inline-block;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 4px 0;
+  transition: color 0.2s;
+}
+
+.book-url-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}

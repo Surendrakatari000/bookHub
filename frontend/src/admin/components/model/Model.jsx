@@ -96,6 +96,17 @@ const BookModal = ({
         />
       </div>
 
+      <div>
+        <label>Book URL</label>
+        <input
+          type="text"
+          name="bookUrl"
+          value={bookDetails.bookUrl || ""}
+          onChange={handleChange}
+          placeholder="https://example.com/book-link"
+        />
+      </div>
+
       <div className="button-model-con">
         <button type="button" onClick={cancelButtonFun}>
           Cancel

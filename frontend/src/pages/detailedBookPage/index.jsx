@@ -48,6 +48,7 @@ const DetailedViewPage = () => {
   useEffect(() => {
     fetchBookById();
   }, []);
+  
 
   const buttonsdata = detailedBookButton(bookStatus);
 
@@ -83,6 +84,16 @@ const DetailedViewPage = () => {
                   <h1>{bookDetailed.title}</h1>
                   <p>Authors :{bookDetailed.authorName}</p>
                   <p>Avg Rating : ⭐ {bookDetailed.rating}</p>
+                  {bookDetailed.bookUrl && (
+                    <a
+                      href={bookDetailed.bookUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="book-url-link"
+                    >
+                      📖 Read this Book
+                    </a>
+                  )}
                   {bookStatus !== "not user book" && (
                     <span>Status : {buttonsdata.zero} </span>
                   )}

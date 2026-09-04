@@ -1,0 +1,76 @@
+
+// The Alchemist : https://www.google.co.in/books/edition/The_Alchemist/gI_vEAAAQBAJ?hl=en&gbpv=1&dq=The+Alchemist&printsec=frontcover
+// bookUrl = data:image/jpg;base64,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
+
+// 1984 : https://www.google.co.in/books/edition/Official_Gazette_of_the_United_States_Pa/ReG6y8kmNFwC?hl=en&gbpv=1&dq=1984&pg=RA1-PA144&printsec=frontcover
+
+// Animal Farm : https://www.google.co.in/books/edition/Animal_Farm/T9BUEQAAQBAJ?hl=en&gbpv=1&dq=animal+farm&printsec=frontcover
+
+// A Brief History of Time : https://www.google.co.in/books/edition/A_Brief_History_Of_Time/9ysba1A1UF8C?hl=en&gbpv=1&dq=A+Brief+History+of+Time&pg=PT6&printsec=frontcover
+
+// The 7 Habits of Highly Effective People : https://www.google.co.in/books/edition/The_7_Habits_of_Highly_Effective_People/020TAgAAQBAJ?hl=en&gbpv=1
+
+// How to Win Friends and Influence People : https://www.google.co.in/books/edition/How_To_Win_Friends_and_Influence_People/vhjXEAAAQBAJ?hl=en&gbpv=1&dq=How+to+Win+Friends+and+Influence+People&printsec=frontcover
+
+// Atomic Habits : https://www.google.co.in/books/edition/Atomic_Habits/fFCjDQAAQBAJ?hl=en&gbpv=1&dq=Atomic+Habits&pg=PT24&printsec=frontcover
+
+// Man's Search for Meaning : https://www.google.co.in/books/edition/Man_s_Search_for_Meaning/F-Q_xGjWBi8C?hl=en&gbpv=1&dq=Man%27s+Search+for+Meaning&printsec=frontcover
+
+// Sapiens : https://www.google.co.in/books/edition/Sapiens_Tenth_Anniversary_Edition/MosvEQAAQBAJ?hl=en&gbpv=1&dq=Sapiens&printsec=frontcover
+
+// The Chronicles of Narnia : https://www.google.co.in/books/edition/The_Chronicles_of_Narnia_Vol_I_The_Lion/6EIoDwAAQBAJ?hl=en&gbpv=1&dq=The+Chronicles+of+Narnia&printsec=frontcover
+
+// The Kite Runner : https://www.google.co.in/books/edition/The_Kite_Runner/KUMIEAAAQBAJ?hl=en&gbpv=1&dq=The+Kite+Runner&printsec=frontcover
+
+// One Hundred Years of Solitude : https://www.google.co.in/books/edition/One_Hundred_Years_of_Solitude/AfB8EAAAQBAJ?hl=en&gbpv=1&dq=One+Hundred+Years+of+Solitude&printsec=frontcover
+
+// The Adventures of Sherlock Holmes : https://www.google.co.in/books/edition/Adventures_of_Sherlock_Holmes/buc0AAAAMAAJ?hl=en&gbpv=1&dq=The+Adventures+of+Sherlock+Holmes&printsec=frontcover
+
+// Les Misérables : https://www.google.co.in/books/edition/Les_mis%C3%A9rables/fb7w8JSQN1MC?hl=en&gbpv=1&dq=Les+Mis%C3%A9rables&pg=PA28&printsec=frontcover
+
+// The Count of Monte Cristo : https://www.google.co.in/books/edition/The_Count_of_Monte_Cristo/hxxoGjkHQygC?hl=en&gbpv=1&dq=The+Count+of+Monte+Cristo&printsec=frontcover
+
+// War and Peace : https://www.google.co.in/books/edition/War_and_peace/Ou-rdfU5t7kC?hl=en&gbpv=1&dq=War+and+Peace&pg=PA108&printsec=frontcover
+
+// The Brothers Karamazov : https://www.google.co.in/books/edition/The_Brothers_Karamazov/OG0e6djUgUYC?hl=en&gbpv=1&dq=The+Brothers+Karamazov&printsec=frontcover
+
+// Crime and Punishment : https://www.google.co.in/books/edition/Encyclopedia_of_Crime_and_Punishment/rTKGPEIoRxoC?hl=en&gbpv=1&dq=Crime+and+Punishment&pg=PR33&printsec=frontcover
+
+// Frankenstein : https://www.google.co.in/books/edition/Frankenstein_s_Science/sz4Yuz-E-EgC?hl=en&gbpv=1&dq=Frankenstein&pg=PA93&printsec=frontcover
+
+// The Little Princ : https://www.google.co.in/books/edition/The_Little_Prince/jM_WDwAAQBAJ?hl=en&gbpv=1&dq=The+Little+Prince&printsec=frontcover 
+
+
+
+
+
+
+// The Silent Patient : https://www.google.co.in/books/edition/The_Silent_Patient/a6NnDwAAQBAJ?hl=en&gbpv=1&dq=The+Silent+Patient&printsec=frontcover
+
+// Where the Crawdads Sing : https://www.google.co.in/books/edition/Where_the_Crawdads_Sing_Reese_s_Book_Clu/CGVDDwAAQBAJ?hl=en&gbpv=1&dq=Where+the+Crawdads+Sing&printsec=frontcover
+
+// The Fault in Our Stars : https://www.google.co.in/books/edition/The_Fault_in_Our_Stars/Qk8n0olOX5MC?hl=en&gbpv=1&dq=The+Fault+in+Our+Stars&printsec=frontcover
+
+// A Man Called Ove: https://www.google.co.in/books/edition/A_Man_Called_Ove/7mtNAgAAQBAJ?hl=en&gbpv=1&dq=A+Man+Called+Ove&printsec=frontcover
+
+// Normal People : https://www.google.co.in/books/edition/Normal_People/x3tgDwAAQBAJ?hl=en&gbpv=1&dq=Normal+People&printsec=frontcover
+
+// Thinking, Fast and Slow : https://www.google.co.in/books/edition/Thinking_Fast_and_Slow/oV1tXT3HigoC?hl=en&gbpv=1&dq=Thinking,+Fast+and+Slow&pg=PT49&printsec=frontcover
+
+// Can't Hurt Me : https://www.google.co.in/books/edition/Can_t_Hurt_Me/IeYmEAAAQBAJ?hl=en&gbpv=1&dq=Can%27t+Hurt+Me&printsec=frontcover 
+
+// The 5 AM Club : https://www.google.co.in/books/edition/The_5_AM_Club/-GWBDwAAQBAJ?hl=en&gbpv=1&dq=The+5+AM+Club&printsec=frontcover
+
+// Ikigai : https://www.google.co.in/books/edition/Ikigai/MDksDwAAQBAJ?hl=en&gbpv=1&dq=Ikigai&printsec=frontcover 
+
+// The 48 Laws of Power : https://www.google.co.in/books/edition/The_48_Laws_Of_Power/P_zMW3EHnTEC?hl=en&gbpv=1&dq=The+48+Laws+of+Power&printsec=frontcover
+
+// The 4-Hour Workweek : https://www.google.co.in/books/edition/The_4_Hour_Work_Week/tQ1C-rvAfJUC?hl=en&gbpv=1&dq=The+4-Hour+Workweek&printsec=frontcover 
+
+// Outliers : https://www.google.co.in/books/edition/Outlier_Detection_in_Python/56E1EQAAQBAJ?hl=en&gbpv=1&dq=Outliers&pg=PA91&printsec=frontcover 
+
+// rich dad poor dad : 
+// https://www.google.co.in/books/edition/Rich_Dad_Poor_Dad_What_the_Rich_Teach_Th/kRqeDwAAQBAJ?hl=en&gbpv=1&dq=rich+dad+poor+dad&printsec=frontcover
+
+
+

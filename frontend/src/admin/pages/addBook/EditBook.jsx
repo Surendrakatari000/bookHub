@@ -11,6 +11,7 @@ const EditBook = ({ isOpen, onClose, bookToEdit, onRefresh }) => {
     coverPic: "",
     aboutBook: "",
     aboutAuthor: "",
+    bookUrl: "",
   });
 
   useEffect(() => {
