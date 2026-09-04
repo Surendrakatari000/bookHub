@@ -206,7 +206,11 @@ const login = async (req, res) => {
       .json({
         jwtToken,
         message: "user login successfully... ",
-        user_details: { _id: user._id, name: user.email },
+        user_details: {
+          _id: user._id,
+          name: user.email,
+          isAdmin: Boolean(user.isAdmin),
+        },
       });
   } catch (error) {
     console.log(error.message);

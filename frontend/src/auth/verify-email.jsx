@@ -21,7 +21,7 @@ const InProcess = () => (
   </div>
 );
 
-const Success = ({ setIsLoggedIn }) => {
+const Success = ({ refreshAuth }) => {
   const navigate = useNavigate();
 
   return (
@@ -37,9 +37,9 @@ const Success = ({ setIsLoggedIn }) => {
       </p>
       <button
         className="button-sucess-card"
-        onClick={() => {
-          setIsLoggedIn(true);
-          navigate("/");
+        onClick={async () => {
+          const session = await refreshAuth();
+          navigate(session.isAdmin ? "/admin" : "/", { replace: true });
         }}
       >
         Go to Home
@@ -50,7 +50,7 @@ const Success = ({ setIsLoggedIn }) => {
 
 const VerifyMail = () => {
   const { token } = useParams();
-  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const { refreshAuth } = useContext(AuthContext);
   const [pending, setPending] = useState(true);
   const [error, setError] = useState("");
 
@@ -95,7 +95,7 @@ const VerifyMail = () => {
     };
 
     verifyEmail();
-  }, [token, setIsLoggedIn]);
+  }, [token]);
 
   return (
     <div className="login-page-container">
@@ -109,7 +109,7 @@ const VerifyMail = () => {
           /> */}
 
           {pending && !error && <InProcess />}
-          {!pending && !error && <Success setIsLoggedIn={setIsLoggedIn} />}
+          {!pending && !error && <Success refreshAuth={refreshAuth} />}
           {error && <p className="error-message">{error}</p>}
         </div>
       </div>

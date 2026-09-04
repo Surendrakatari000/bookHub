@@ -20,9 +20,13 @@ const SignUpForm = ({
     <form className="main-form-con" onSubmit={registerHandler}>
       <img
         alt="BookHub logo"
-        className="image-bookHub-logo"
+        className="auth-logo"
         src="https://res.cloudinary.com/dz39z2hyf/image/upload/v1758258518/Screenshot_2025-09-19_103730_yivugm.png"
       />
+      <div className="auth-heading">
+        <h1>Create your account</h1>
+        <p>Join Book Hub and start building your library.</p>
+      </div>
 
       <div className="form-con">
         <div className="name-con">
@@ -31,6 +35,8 @@ const SignUpForm = ({
             type="email"
             id="email"
             name="email"
+            placeholder="you@example.com"
+            autoComplete="email"
             value={userDetails.email}
             required
             onChange={(e) =>
@@ -45,6 +51,8 @@ const SignUpForm = ({
             type="text"
             id="username"
             name="username"
+            placeholder="Choose a username"
+            autoComplete="username"
             required
             value={userDetails.userName}
             onChange={(e) =>
@@ -60,6 +68,8 @@ const SignUpForm = ({
               type={showPassword ? "text" : "password"}
               id="password"
               name="password"
+              placeholder="At least 8 characters"
+              autoComplete="new-password"
               required
               value={userDetails.password}
               onChange={(e) =>
@@ -72,6 +82,7 @@ const SignUpForm = ({
             <button
               type="button"
               className="toggle-btn"
+              aria-label={showPassword ? "Hide password" : "Show password"}
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? <FiEyeOff /> : <FiEye />}
@@ -83,13 +94,12 @@ const SignUpForm = ({
           className="log-button"
           type="submit"
           disabled={isSubmitting}
-          style={{ opacity: isSubmitting ? 0.7 : 1 }}
         >
-          {isSubmitting ? "Processing..." : "Sign Up"}
+          {isSubmitting ? "Creating account..." : "Sign up"}
         </button>
 
-        <p className="registeer-para">
-          Already have an account? <Link to="/auth/login">Login</Link>
+        <p className="register-para registeer-para">
+          Already have an account? <Link to="/auth/login">Sign in</Link>
         </p>
       </div>
     </form>
@@ -246,19 +256,7 @@ const Signup = () => {
       <div className="login-page-details-container">
         {/* Error Message Banner */}
         {error.isError && !mailSent && (
-          <div
-            style={{
-              position: "absolute",
-              top: "20px",
-              background: "#fee2e2",
-              color: "#dc2626",
-              padding: "10px 20px",
-              borderRadius: "8px",
-              fontWeight: "500",
-            }}
-          >
-            {error.errorMessage}
-          </div>
+          <div className="auth-error-banner">{error.errorMessage}</div>
         )}
 
         {mailSent ? (

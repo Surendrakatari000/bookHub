@@ -7,7 +7,6 @@ import SideImage from "./components/sideImage";
 import "./index.css";
 const API_URL = import.meta.env.VITE_API_URL;
 
-// ✅ 1. Define the Form component OUTSIDE the Login component
 const LoginForm = ({
   showPassword,
   setShowPassword,
@@ -20,11 +19,12 @@ const LoginForm = ({
     <form className="form-con" onSubmit={loginHandler}>
       <div className="name-con">
         <label htmlFor="email">Email</label>
-        <br />
         <input
           type="email"
           id="email"
           name="email"
+          placeholder="you@example.com"
+          autoComplete="email"
           value={userDetails.email}
           required
           onChange={(e) =>
@@ -34,13 +34,14 @@ const LoginForm = ({
       </div>
       <div className="password-con">
         <label htmlFor="password">Password</label>
-        <br />
         <div className="password-wrapper">
           <input
             className="input-pass"
             type={showPassword ? "text" : "password"}
             id="password"
             name="password"
+            placeholder="Enter your password"
+            autoComplete="current-password"
             required
             value={userDetails.password}
             onChange={(e) =>
@@ -50,6 +51,7 @@ const LoginForm = ({
           <button
             type="button"
             className="toggle-btn"
+            aria-label={showPassword ? "Hide password" : "Show password"}
             onClick={() => setShowPassword(!showPassword)}
           >
             {showPassword ? <FiEyeOff /> : <FiEye />}
@@ -57,16 +59,15 @@ const LoginForm = ({
         </div>
       </div>
       <button className="log-button" type="submit" disabled={loading}>
-        {loading ? "Logging in..." : "Login"}
+        {loading ? "Signing in..." : "Sign in"}
       </button>
     </form>
   );
 };
 
-// 2. The main Login Component
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { setIsLoggedIn } = useContext(AuthContext);
+  const { refreshAuth, setIsLoggedIn, setIsAdmin } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -105,8 +106,19 @@ const Login = () => {
       }
 
       setError({ isError: false, errorMessage: "" });
-      setIsLoggedIn(true);
-      navigate("/", { replace: true });
+
+      const isAdminFromLogin = Boolean(data.user_details?.isAdmin);
+      const session = await refreshAuth();
+      const isAdminUser = session.isLoggedIn
+        ? session.isAdmin
+        : isAdminFromLogin;
+
+      if (!session.isLoggedIn) {
+        setIsLoggedIn(true);
+        setIsAdmin(isAdminFromLogin);
+      }
+
+      navigate(isAdminUser ? "/admin" : "/", { replace: true });
     } catch (err) {
       setError({
         isError: true,
@@ -125,14 +137,17 @@ const Login = () => {
         <div className="main-form-con">
           <img
             alt="bookHub logo"
-            className="image-bookHub-logo"
+            className="auth-logo"
             src={logoUrl}
           />
+          <div className="auth-heading">
+            <h1>Welcome back</h1>
+            <p>Sign in to continue to your library.</p>
+          </div>
           {error.isError && (
-            <p className="error-message">{error.errorMessage}</p>
+            <p className="error-message error-messeage">{error.errorMessage}</p>
           )}
 
-          {/* ✅ 3. Call the separate component and pass the props */}
           <LoginForm
             showPassword={showPassword}
             setShowPassword={setShowPassword}
@@ -142,10 +157,10 @@ const Login = () => {
             loginHandler={loginHandler}
           />
 
-          <p className="register-para">
+          <p className="register-para registeer-para">
             Don’t have an account?{" "}
             <Link to="/auth/signup" className="register-link">
-              Register
+              Create one
             </Link>
           </p>
         </div>

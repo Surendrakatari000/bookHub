@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -9,32 +9,47 @@ const AuthProvider = ({ children }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  const refreshAuth = useCallback(async () => {
+    try {
+      const res = await fetch(`${API_URL}/auth/isloged`, {
+        credentials: "include",
+      });
+
+      const data = await res.json();
+
+      if (data.authenticated) {
+        const admin = Boolean(data.user?.isAdmin);
+        setIsLoggedIn(true);
+        setIsAdmin(admin);
+        return { isLoggedIn: true, isAdmin: admin };
+      }
+
+      setIsLoggedIn(false);
+      setIsAdmin(false);
+      return { isLoggedIn: false, isAdmin: false };
+    } catch (err) {
+      setIsLoggedIn(false);
+      setIsAdmin(false);
+      return { isLoggedIn: false, isAdmin: false };
+    }
+  }, []);
+
+  const clearAuth = useCallback(() => {
+    setIsLoggedIn(false);
+    setIsAdmin(false);
+  }, []);
+
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch(`${API_URL}/auth/isloged`, {
-          credentials: "include",
-        });
-
-        const data = await res.json();
-
-        if (data.authenticated) {
-          setIsLoggedIn(true);
-          setIsAdmin(data.user.isAdmin);
-        } else {
-          setIsLoggedIn(false);
-          setIsAdmin(false);
-        }
-      } catch (err) {
-        setIsLoggedIn(false);
-        setIsAdmin(false);
+        await refreshAuth();
       } finally {
         setLoading(false);
       }
     };
 
     checkAuth();
-  }, []);
+  }, [refreshAuth]);
 
   return (
     <AuthContext.Provider
@@ -44,6 +59,8 @@ const AuthProvider = ({ children }) => {
         loading,
         setIsLoggedIn,
         setIsAdmin,
+        refreshAuth,
+        clearAuth,
       }}
     >
       {children}
