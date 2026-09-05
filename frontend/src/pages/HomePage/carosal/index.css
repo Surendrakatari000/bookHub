@@ -9,11 +9,11 @@
 .carosal-container {
   width: 90%;
   margin: 24px auto;
-  min-height: 45vh;
-  max-height: 47vh;
-  padding: 20px;
+  min-height: auto;
+  padding: 24px;
   background-color: #ffffff;
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
 /* Let slick control widths; ensure slides are visible */
@@ -26,75 +26,319 @@
 
 .carosal-header-container {
   display: flex;
-  margin-bottom: 2%;
+  margin-bottom: 16px;
   justify-content: space-between;
-  padding-left: 5%;
-  padding-right: 5%;
+  align-items: center;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.books-heading-corosal {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.01em;
 }
 
 .slider-container {
   width: 90%;
-  height: 80%;
-  margin: 24px auto;
-}
-
-.slick-prev:before,
-.slick-next:before {
-  font-family: "slick";
-  font-size: 20px;
-  line-height: 1;
-  opacity: 0.75;
-  color: grey;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0 auto;
+  position: relative;
 }
 
 .find-books-button {
-  background-color: #509beb;
+  background-color: #0f172a;
   color: white;
-  border-width: 0px;
-  padding: 10px;
-  border-radius: 5px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.find-books-button:hover {
+  background-color: #1e293b;
+}
+
+.find-books-button:active {
+  transform: scale(0.97);
+}
+
+.link-book {
+  text-decoration: none;
 }
 
 .book-con-carosel {
   text-align: center;
-  padding-right: 10px;
-  padding-left: 10px;
-  color: black;
+  padding: 0 12px;
+  color: #0f172a;
 }
 
-.books-heading-corosal {
-  margin-left: 1vw;
+.image-con {
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .image-book {
-  height: 30vh;
+  height: 280px;
   width: 100%;
+  object-fit: cover;
   border-radius: 10px;
   margin-bottom: 10px;
+  transition: transform 0.3s ease;
 }
 
-.book_author {
-  font-size: 12px;
-  text-align: center;
+.book-con-carosel:hover .image-book {
+  transform: scale(1.03);
 }
 
 .book_title {
   text-align: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 6px 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Increase size of arrows */
-.slick-prev,
-.slick-next {
-  width: 20px; /* default is 30px */
-  height: 20px; /* default is 30px */
-  z-index: 1;
+.book_author {
+  font-size: 0.8rem;
+  text-align: center;
+  color: #64748b;
+  margin: 0;
 }
 
+/* ── Custom Carousel Arrows ── */
+
+.carousel-arrow {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #334155;
+  transition: all 0.25s ease;
+}
+
+.carousel-arrow:hover {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.25);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-arrow-next {
+  right: -22px;
+}
+
+.carousel-arrow-prev {
+  left: -22px;
+}
+
+/* Hide default slick arrows since we use custom ones */
 .slick-prev:before,
 .slick-next:before {
-  font-size: 30px; /* increase arrow icon size */
-  color: #cec7c7; /* arrow color */
+  display: none;
+}
+
+.slick-prev,
+.slick-next {
+  width: 0;
+  height: 0;
+}
+
+/* ── Slick dots (visible on mobile) ── */
+
+.slick-dots {
+  bottom: -28px;
+}
+
+.slick-dots li button:before {
+  font-size: 8px;
+  color: #cbd5e1;
+  opacity: 1;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #0f172a;
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/*  RESPONSIVE                                                                */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Large screens (>1200px) ── */
+@media (min-width: 1200px) {
+  .carosal-container {
+    width: 85%;
+    padding: 28px;
+  }
+
+  .image-book {
+    height: 300px;
+  }
+}
+
+/* ── Tablets (768px - 1024px) ── */
+@media (max-width: 1024px) {
+  .carosal-container {
+    width: 92%;
+    padding: 20px;
+  }
+
+  .slider-container {
+    width: 85%;
+  }
+
+  .carousel-arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .carousel-arrow-next {
+    right: -18px;
+  }
+
+  .carousel-arrow-prev {
+    left: -18px;
+  }
+
+  .image-book {
+    height: 250px;
+  }
+
+  .books-heading-corosal {
+    font-size: 1.2rem;
+  }
+}
+
+/* ── Small tablets / Large phones (600px - 768px) ── */
+@media (max-width: 768px) {
+  .carosal-container {
+    width: 95%;
+    padding: 16px;
+    margin: 16px auto;
+  }
+
+  .carosal-header-container {
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-bottom: 12px;
+  }
+
+  .slider-container {
+    width: 88%;
+  }
+
+  .books-heading-corosal {
+    font-size: 1.1rem;
+  }
+
+  .find-books-button {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+
+  .image-book {
+    height: 220px;
+  }
+
+  .book_title {
+    font-size: 0.875rem;
+  }
+
+  .book_author {
+    font-size: 0.75rem;
+  }
+}
+
+/* ── Mobile (<600px) — Arrows hidden, dots shown, 1 slide ── */
+@media (max-width: 600px) {
+  .carosal-container {
+    width: 100%;
+    border-radius: 0;
+    padding: 16px 12px 36px;
+    margin: 12px 0;
+    box-shadow: none;
+    border-top: 1px solid #f1f5f9;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .carosal-header-container {
+    padding-left: 4px;
+    padding-right: 4px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .slider-container {
+    width: 95%;
+  }
+
+  .books-heading-corosal {
+    font-size: 1.05rem;
+  }
+
+  .find-books-button {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    border-radius: 6px;
+  }
+
+  .book-con-carosel {
+    padding: 0 6px;
+  }
+
+  .image-book {
+    height: 280px;
+    border-radius: 12px;
+  }
+
+  .book_title {
+    font-size: 0.9rem;
+  }
+
+  .book_author {
+    font-size: 0.78rem;
+  }
+
+  /* Arrows are hidden via react-slick on mobile, but ensure CSS hides them too */
+  .carousel-arrow {
+    display: none;
+  }
+}
+
+/* ── Very small phones (<380px) ── */
+@media (max-width: 380px) {
+  .image-book {
+    height: 240px;
+  }
+
+  .books-heading-corosal {
+    font-size: 0.95rem;
+  }
+
+  .carosal-container {
+    padding: 12px 8px 32px;
+  }
 }

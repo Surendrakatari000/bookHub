@@ -12,22 +12,12 @@ const NextArrow = (props) => {
   const { onClick } = props;
   return (
     <div
-      style={{
-        display: "block",
-        background: "#c4c1c8",
-        height: "40px",
-        width: "40px",
-        borderRadius: "50%",
-        right: "-40px",
-        position: "absolute",
-        top: "40%",
-        transform: "translateY(-50%)",
-        zIndex: 2,
-        cursor: "pointer",
-      }}
+      className="carousel-arrow carousel-arrow-next"
       onClick={onClick}
     >
-      {/* &gt; */}
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="9 18 15 12 9 6" />
+      </svg>
     </div>
   );
 };
@@ -36,22 +26,12 @@ const PrevArrow = (props) => {
   const { onClick } = props;
   return (
     <div
-      style={{
-        display: "block",
-        background: "#c4c1c8",
-        height: "40px",
-        width: "40px",
-        borderRadius: "50%",
-        left: "-40px",
-        position: "absolute",
-        top: "40%",
-        transform: "translateY(-50%)",
-        zIndex: 2,
-        cursor: "pointer",
-      }}
+      className="carousel-arrow carousel-arrow-prev"
       onClick={onClick}
     >
-      {/* &lt; */}
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
     </div>
   );
 };
@@ -70,6 +50,25 @@ const SimpleSlider = () => {
     adaptiveHeight: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    swipeToSlide: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+          arrows: false,
+        },
+      },
+    ],
   };
 
   const API_URL = import.meta.env.VITE_API_URL;
