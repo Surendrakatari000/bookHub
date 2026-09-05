@@ -44,6 +44,7 @@ const resendVerificationEmail = async (req, res) => {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
+      family: 4, // Force IPv4 to avoid ENETUNREACH on IPv6
     });
 
     const link = `${frontendUrl}/auth/verify-mail/${emailToken}`;
@@ -131,17 +132,23 @@ const register = async (req, res) => {
       { expiresIn: "15m" },
     );
 
+    // Send verification email in background (don't block the response)
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
+      family: 4, // Force IPv4 to avoid ENETUNREACH on IPv6
+      connectionTimeout: 10000, // 10 seconds to connect
+      greetingTimeout: 10000,   // 10 seconds for greeting
+      socketTimeout: 15000,     // 15 seconds for socket
     });
 
     const link = `${frontendUrl}/auth/verify-mail/${emailToken}`;
 
-    await transporter.sendMail({
+    // Fire-and-forget: send email in background
+    transporter.sendMail({
       to: user.email,
       subject: "Verify your email",
       html: `
@@ -149,10 +156,13 @@ const register = async (req, res) => {
         <p>Click below to verify your email:</p>
         <a href="${link}">Verify Email</a>
       `,
+    }).then(() => {
+      console.log("Verification email sent successfully to", user.email);
+    }).catch((emailError) => {
+      console.error("Failed to send verification email:", emailError.message);
     });
 
     console.log(user);
-    console.log("mail sent succesfully...");
     console.log("Signup successful. Check your email to verify.");
     res.status(201).json({
       message: "Signup successful. Check your email to verify.",
