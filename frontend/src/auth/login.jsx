@@ -57,6 +57,11 @@ const LoginForm = ({
             {showPassword ? <FiEyeOff /> : <FiEye />}
           </button>
         </div>
+        <div className="forgot-password-row">
+          <Link to="/auth/forgot-password" className="forgot-password-link">
+            Forgot password?
+          </Link>
+        </div>
       </div>
       <button className="log-button" type="submit" disabled={loading}>
         {loading ? "Signing in..." : "Sign in"}

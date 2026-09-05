@@ -9,7 +9,8 @@ import UserRoutes from "../protectedRoutes/UserRoutes.jsx";
 import PublicOnlyRoute from "../protectedRoutes/PublicOnlyRoute.jsx";
 import AdminRoutes from "../protectedRoutes/AdminRoutes.jsx";
 import NotFoundPage from "../pages/NotFoundPage/NotFound.jsx";
-import VerifyMail from "../auth/verify-email.jsx";
+import VerifyOtp from "../auth/verify-email.jsx";
+import ForgotPassword from "../auth/forgot-password.jsx";
 import Books from "../admin/pages/book/books.jsx";
 import "./App.css";
 
@@ -49,10 +50,18 @@ function App() {
         }
       />
       <Route
-        path="/auth/verify-mail/:token"
+        path="/auth/verify-otp"
         element={
           <PublicOnlyRoute>
-            <VerifyMail />
+            <VerifyOtp />
+          </PublicOnlyRoute>
+        }
+      />
+      <Route
+        path="/auth/forgot-password"
+        element={
+          <PublicOnlyRoute>
+            <ForgotPassword />
           </PublicOnlyRoute>
         }
       />

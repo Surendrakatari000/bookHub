@@ -30,6 +30,19 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    otp: {
+      type: String,
+      default: null,
+    },
+    otpExpiresAt: {
+      type: Date,
+      default: null,
+    },
+    otpPurpose: {
+      type: String,
+      enum: ["verify", "reset", null],
+      default: null,
+    },
   },
   {
     timestamps: true,

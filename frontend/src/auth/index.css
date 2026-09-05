@@ -372,3 +372,430 @@ body {
     box-shadow: none;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/*  OTP VERIFICATION STYLES                                                   */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.otp-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.otp-card h1 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 6px;
+  letter-spacing: -0.02em;
+}
+
+.otp-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  line-height: 1;
+  animation: otpIconBounce 0.6s ease;
+}
+
+@keyframes otpIconBounce {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.otp-subtitle {
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.55;
+  margin: 0 0 24px;
+}
+
+.otp-subtitle strong {
+  color: #334155;
+}
+
+/* ── OTP Input Boxes ── */
+
+.otp-input-container {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.otp-digit-input {
+  width: 48px;
+  height: 56px;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0f172a;
+  background: #f8fafc;
+  caret-color: #667eea;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  font-family: 'Segoe UI', Roboto, monospace;
+}
+
+.otp-digit-input:focus {
+  border-color: #667eea;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+  transform: translateY(-2px);
+}
+
+.otp-digit-filled {
+  border-color: #667eea;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+  animation: otpDigitPop 0.2s ease;
+}
+
+@keyframes otpDigitPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.otp-digit-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ── OTP Verifying State ── */
+
+.otp-verifying {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #667eea;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+/* ── OTP Error ── */
+
+.otp-error {
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  margin: 0 0 12px;
+  width: 100%;
+  text-align: center;
+  animation: otpShake 0.4s ease;
+}
+
+@keyframes otpShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+/* ── OTP Submit Button ── */
+
+.otp-submit-btn {
+  width: 100%;
+  height: 46px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 0.975rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.otp-submit-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.otp-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.otp-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ── OTP Resend Section ── */
+
+.otp-resend-section {
+  margin-top: 20px;
+}
+
+.otp-countdown {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.otp-countdown strong {
+  color: #667eea;
+  font-weight: 700;
+}
+
+.otp-resend-btn {
+  background: none;
+  border: none;
+  color: #667eea;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.2s;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+}
+
+.otp-resend-btn:hover {
+  color: #764ba2;
+  text-decoration-color: #764ba2;
+}
+
+.otp-resend-msg {
+  font-size: 0.825rem;
+  margin-top: 6px;
+}
+
+.otp-resend-msg.success {
+  color: #059669;
+}
+
+.otp-resend-msg.error {
+  color: #b91c1c;
+}
+
+/* ── Success Icon ── */
+
+.otp-success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: white;
+  font-weight: 700;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 25px rgba(5, 150, 105, 0.3);
+  animation: successPop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes successPop {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/*  FORGOT PASSWORD STYLES                                                    */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Forgot Password Link on Login ── */
+
+.forgot-password-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+.forgot-password-link {
+  font-size: 0.8125rem;
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.forgot-password-link:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+/* ── Step Indicator ── */
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 28px;
+  width: 100%;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.step-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: #f1f5f9;
+  color: #94a3b8;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.step-active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 3px 12px rgba(102, 126, 234, 0.35);
+}
+
+.step-done {
+  background: #059669;
+  color: white;
+  border-color: transparent;
+  font-size: 0.7rem;
+}
+
+.step-label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.step-label-active {
+  color: #334155;
+  font-weight: 600;
+}
+
+.step-connector {
+  width: 32px;
+  height: 2px;
+  background: #e2e8f0;
+  margin: 0 8px;
+  border-radius: 2px;
+  transition: background 0.3s;
+}
+
+.step-connector-done {
+  background: #059669;
+}
+
+/* ── Forgot Password Input Group ── */
+
+.fp-input-group {
+  width: 100%;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.fp-input-group label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.fp-input {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: #0f172a;
+  background: #f8fafc;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.fp-input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.12);
+}
+
+.fp-input::placeholder {
+  color: #94a3b8;
+}
+
+.fp-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  font-size: 0.875rem;
+  color: #64748b;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.fp-back-link:hover {
+  color: #667eea;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/*  RESPONSIVE — OTP & FORGOT PASSWORD                                        */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .otp-digit-input {
+    width: 42px;
+    height: 50px;
+    font-size: 1.25rem;
+    border-radius: 10px;
+  }
+
+  .otp-input-container {
+    gap: 6px;
+  }
+
+  .step-connector {
+    width: 20px;
+  }
+
+  .step-label {
+    font-size: 0.7rem;
+  }
+
+  .step-circle {
+    width: 26px;
+    height: 26px;
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .otp-digit-input {
+    width: 38px;
+    height: 46px;
+    font-size: 1.1rem;
+  }
+
+  .otp-input-container {
+    gap: 4px;
+  }
+}

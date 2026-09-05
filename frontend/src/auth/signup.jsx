@@ -229,8 +229,11 @@ const Signup = () => {
         throw new Error(data.message || "Registration failed");
       }
 
-      // Success
-      setMailSent(true);
+      // Navigate to OTP verification page
+      navigate("/auth/verify-otp", {
+        state: { email: userDetails.email },
+        replace: true,
+      });
     } catch (err) {
       console.error(err);
       setError({
@@ -238,7 +241,7 @@ const Signup = () => {
         errorMessage: err.message || "Something went wrong. Please try again.",
       });
     } finally {
-      setIsSubmitting(false); // Stop loading (Important fix!)
+      setIsSubmitting(false);
     }
   };
 
