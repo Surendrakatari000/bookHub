@@ -48,7 +48,8 @@ const sendOtpEmail = async (email, otp, purpose, userName) => {
     purpose === "verify"
       ? "Verify your email — BookHub"
       : "Reset your password — BookHub";
-
+console.log("EMAIL_USER:", process.env.EMAIL_USER);
+console.log("EMAIL_PASS exists:", !!process.env.EMAIL_PASS);
   await transporter.sendMail({
     from: `"BookHub" <${process.env.EMAIL_USER}>`,
     to: email,
