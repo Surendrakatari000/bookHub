@@ -1,45 +1,74 @@
-const detailedBookButton = (statusbutton) => {
-  const buttonObject = {
-    zero: "",
-    first: "",
-    second: "",
-    third: "",
-  };
-
-  const list = [
-    "move to want to read",
-    "move to current reading",
-    "move to completed",
-    "remove from list",
-  ];
-
-  switch (statusbutton) {
+/**
+ * Returns status label and available actions based on the book's current status.
+ *
+ * @param {string} status - One of: "not user book", "want_to_read", "current_reading", "completed"
+ * @returns {{ statusLabel: string, actions: Array<{ label: string, value: string, variant: string }> }}
+ */
+const getBookActions = (status) => {
+  switch (status) {
     case "want_to_read":
-      buttonObject.first = list[1];
-      buttonObject.second = list[2];
-      buttonObject.third = list[3];
-      buttonObject.zero = "Want to read";
-      break;
+      return {
+        statusLabel: "Want to Read",
+        statusVariant: "info",
+        actions: [
+          {
+            label: "Move to Currently Reading",
+            value: "current_reading",
+            variant: "primary",
+          },
+          {
+            label: "Remove from List",
+            value: "remove",
+            variant: "danger",
+          },
+        ],
+      };
 
     case "current_reading":
-      buttonObject.first = list[2];
-      buttonObject.second = list[0];
-      buttonObject.third = list[3];
-      buttonObject.zero = "Current reading";
-      break;
+      return {
+        statusLabel: "Currently Reading",
+        statusVariant: "warning",
+        actions: [
+          {
+            label: "Move to Completed",
+            value: "completed",
+            variant: "success",
+          },
+          {
+            label: "Remove from List",
+            value: "remove",
+            variant: "danger",
+          },
+        ],
+      };
+
     case "completed":
-      buttonObject.first = list[0];
-      buttonObject.second = list[1];
-      buttonObject.third = list[3];
-      buttonObject.zero = "Completed";
-      break;
+      return {
+        statusLabel: "Completed",
+        statusVariant: "success",
+        actions: [
+          {
+            label: "Remove from List",
+            value: "remove",
+            variant: "danger",
+          },
+        ],
+      };
 
     default:
-      buttonObject.first = list[0];
-      buttonObject.second = list[1];
-      buttonObject.third = list[2];
+      // "not user book" or any unknown status
+      return {
+        statusLabel: "Not in your library",
+        statusVariant: "neutral",
+        actions: [
+          {
+            label: "Want to Read",
+            value: "want_to_read",
+            variant: "primary",
+          },
+        ],
+      };
   }
-  return buttonObject;
 };
 
-export default detailedBookButton;
+export default getBookActions;
