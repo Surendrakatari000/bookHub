@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
-import { AuthContext } from "../context/islogged";
+import { AuthContext } from "../context/AuthContext";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
 import SideImage from "./components/sideImage";
@@ -135,11 +135,7 @@ const Login = () => {
       <SideImage imageUrl={imageUrl} />
       <div className="login-page-details-container">
         <div className="main-form-con">
-          <img
-            alt="bookHub logo"
-            className="auth-logo"
-            src={logoUrl}
-          />
+          <img alt="bookHub logo" className="auth-logo" src={logoUrl} />
           <div className="auth-heading">
             <h1>Welcome back</h1>
             <p>Sign in to continue to your library.</p>

@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { useNavigate, Navigate, Link } from "react-router-dom";
-import { AuthContext } from "../context/islogged";
+import { AuthContext } from "../context/AuthContext";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import SideImage from "./components/sideImage";
 import "./index.css";
@@ -90,11 +90,7 @@ const SignUpForm = ({
           </div>
         </div>
 
-        <button
-          className="log-button"
-          type="submit"
-          disabled={isSubmitting}
-        >
+        <button className="log-button" type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Creating account..." : "Sign up"}
         </button>
 
@@ -277,9 +273,6 @@ const Signup = () => {
 };
 
 export default Signup;
-
-
-
 
 // import { useState, useContext } from "react";
 // import { useNavigate, Navigate } from "react-router-dom";

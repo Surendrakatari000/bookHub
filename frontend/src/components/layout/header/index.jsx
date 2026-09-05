@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
-import { AuthContext } from "../../../context/islogged";
+import { AuthContext } from "../../../context/AuthContext";
 import "./index.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -58,7 +58,11 @@ const Header = () => {
           >
             Books
           </NavLink>
-          <button className="Logout-button" type="button" onClick={logoutHandler}>
+          <button
+            className="Logout-button"
+            type="button"
+            onClick={logoutHandler}
+          >
             Logout
           </button>
         </nav>

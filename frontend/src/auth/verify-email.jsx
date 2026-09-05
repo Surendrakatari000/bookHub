@@ -1,7 +1,7 @@
 import SideImage from "./components/sideImage";
 import { useParams, useNavigate } from "react-router-dom";
 import "./index.css";
-import { AuthContext } from "../context/islogged";
+import { AuthContext } from "../context/AuthContext";
 import { useState, useEffect, useContext } from "react";
 import { Oval } from "react-loader-spinner";
 
@@ -68,10 +68,9 @@ const VerifyMail = () => {
 
     const verifyEmail = async () => {
       try {
-        const response = await fetch(
-          `${API_URL}/auth/verify-mail/${token}`,
-          { credentials: "include" },
-        );
+        const response = await fetch(`${API_URL}/auth/verify-mail/${token}`, {
+          credentials: "include",
+        });
 
         const data = await response.json();
 
@@ -86,7 +85,7 @@ const VerifyMail = () => {
             setPending(false);
           }
         }, remainingTime);
-      } catch (err) {
+      } catch {
         setTimeout(() => {
           setError("Something went wrong");
           setPending(false);

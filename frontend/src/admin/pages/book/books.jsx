@@ -202,11 +202,11 @@ const Books = () => {
           return a.title.localeCompare(b.title);
         case "title-desc":
           return b.title.localeCompare(a.title);
-        case "newest":
-          // Try to use createdAt, fallback to _id (timestamp embedded)
+        case "newest": {
           const dateA = a.createdAt ? new Date(a.createdAt) : a._id;
           const dateB = b.createdAt ? new Date(b.createdAt) : b._id;
-          return dateA < dateB ? 1 : -1; // Descending
+          return dateA < dateB ? 1 : -1;
+        }
         // case "oldest":
         //   const dateA_Old = a.createdAt ? new Date(a.createdAt) : a._id;
         //   const dateB_Old = b.createdAt ? new Date(b.createdAt) : b._id;

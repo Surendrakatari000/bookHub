@@ -1,8 +1,7 @@
-import { createContext, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { AuthContext } from "./AuthContext";
 
 const API_URL = import.meta.env.VITE_API_URL;
-
-export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,7 +26,7 @@ const AuthProvider = ({ children }) => {
       setIsLoggedIn(false);
       setIsAdmin(false);
       return { isLoggedIn: false, isAdmin: false };
-    } catch (err) {
+    } catch {
       setIsLoggedIn(false);
       setIsAdmin(false);
       return { isLoggedIn: false, isAdmin: false };

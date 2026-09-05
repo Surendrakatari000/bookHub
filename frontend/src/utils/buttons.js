@@ -13,8 +13,6 @@ const detailedBookButton = (statusbutton) => {
     "remove from list",
   ];
 
-  const value = ["want_to_read", "current_reading", "completed"];
-
   switch (statusbutton) {
     case "want_to_read":
       buttonObject.first = list[1];

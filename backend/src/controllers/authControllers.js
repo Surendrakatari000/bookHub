@@ -5,6 +5,14 @@ const nodemailer = require("nodemailer");
 const validator = require("validator");
 const User = require("../models/users");
 
+const frontendUrl = process.env.CLIENT_URL || "http://localhost:5173";
+const cookieOptions = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  maxAge: 7 * 24 * 60 * 60 * 1000,
+};
+
 const resendVerificationEmail = async (req, res) => {
   try {
     const { email } = req.body;
@@ -38,7 +46,7 @@ const resendVerificationEmail = async (req, res) => {
       },
     });
 
-    const link = `http://localhost:5173/auth/verify-mail/${emailToken}`;
+    const link = `${frontendUrl}/auth/verify-mail/${emailToken}`;
 
     await transporter.sendMail({
       to: user.email,
@@ -80,20 +88,12 @@ const verifyEmail = async (req, res) => {
     });
 
     console.log(user);
-    return res
-      .status(200)
-      .cookie("token", jwtToken, {
-        httpOnly: true,
-        secure: true, // true in production
-        sameSite: "lax",
-        maxAge: 7 * 24 * 60 * 60 * 1000,
-      })
-      .json({
-        message: "Email verified successfully",
-        userName: user.userName,
-        email: user.email,
-        isVerified: user.isVerified,
-      });
+    return res.status(200).cookie("token", jwtToken, cookieOptions).json({
+      message: "Email verified successfully",
+      userName: user.userName,
+      email: user.email,
+      isVerified: user.isVerified,
+    });
   } catch (err) {
     res.status(400).json({ message: "Invalid or expired link" });
   }
@@ -139,7 +139,7 @@ const register = async (req, res) => {
       },
     });
 
-    const link = `http://localhost:5173/auth/verify-mail/${emailToken}`;
+    const link = `${frontendUrl}/auth/verify-mail/${emailToken}`;
 
     await transporter.sendMail({
       to: user.email,
@@ -197,14 +197,8 @@ const login = async (req, res) => {
 
     return res
       .status(200)
-      .cookie("token", jwtToken, {
-        httpOnly: true, // JS can't access (secure)
-        secure: true, // true in production (HTTPS)
-        sameSite: "lax", // or "none" if cross-site
-        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-      })
+      .cookie("token", jwtToken, cookieOptions)
       .json({
-        jwtToken,
         message: "user login successfully... ",
         user_details: {
           _id: user._id,
@@ -221,16 +215,9 @@ const login = async (req, res) => {
 };
 
 const logout = (req, res) => {
-  return res
-    .clearCookie("token", {
-      httpOnly: true,
-      secure: true, // true in production (HTTPS)
-      sameSite: "lax",
-    })
-    .status(200)
-    .json({
-      message: "User logged out successfully",
-    });
+  return res.clearCookie("token", cookieOptions).status(200).json({
+    message: "User logged out successfully",
+  });
 };
 
 const isLogged = async (req, res) => {
@@ -246,7 +233,13 @@ const isLogged = async (req, res) => {
 
     res.json({
       authenticated: true,
-      user: user,
+      user: {
+        _id: user._id,
+        userName: user.userName,
+        email: user.email,
+        isAdmin: Boolean(user.isAdmin),
+        isVerified: Boolean(user.isVerified),
+      },
     });
   } catch (err) {
     res.status(401).json({ authenticated: false });

@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../context/islogged";
+import { AuthContext } from "../context/AuthContext";
 import { ThreeCircles } from "react-loader-spinner";
 import Header from "../components/layout/header";
 import "./proteceted.css";

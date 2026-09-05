@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { AuthContext } from "../../../context/islogged";
+import { AuthContext } from "../../../context/AuthContext";
 import { useContext } from "react";
 import "./index.css";
 
 const NextArrow = (props) => {
- 
-  
   const { onClick } = props;
   return (
     <div
@@ -112,7 +110,11 @@ const SimpleSlider = () => {
       <div className="slider-container">
         <Slider {...settings}>
           {topratedBooks.map((book) => (
-            <Link to={`/books/${book._id}`} key={book._id} className="link-book">
+            <Link
+              to={`/books/${book._id}`}
+              key={book._id}
+              className="link-book"
+            >
               <div className="book-con-carosel" key={book._id}>
                 <div className="image-con">
                   <img src={book.coverPic} className="image-book" />
