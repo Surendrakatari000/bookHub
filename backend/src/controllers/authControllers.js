@@ -24,12 +24,22 @@ const generateOtp = () =>
 /** Create a reusable nodemailer transporter */
 const createTransporter = () =>
   nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
     },
+    // Force IPv4 to avoid ENETUNREACH on IPv6-incompatible networks
     family: 4,
+    lookup: (hostname, options, callback) => {
+      const dns = require("dns");
+      dns.resolve4(hostname, (err, addresses) => {
+        if (err) return callback(err);
+        callback(null, addresses[0], 4);
+      });
+    },
     connectionTimeout: 10000,
     greetingTimeout: 10000,
     socketTimeout: 15000,
@@ -44,6 +54,7 @@ const sendOtpEmail = async (email, otp, purpose, userName) => {
       : "Reset your password — BookHub";
 
   await transporter.sendMail({
+    from: `"BookHub" <${process.env.EMAIL_USER}>`,
     to: email,
     subject,
     html: getOtpEmailHtml(otp, purpose, userName),
