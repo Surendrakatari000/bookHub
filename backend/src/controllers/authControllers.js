@@ -25,24 +25,20 @@ const generateOtp = () =>
 const createTransporter = () =>
   nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
+    port: 587,
+    secure: false, // STARTTLS — upgrades to TLS after connecting (works on most cloud hosts)
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
     },
-    // Force IPv4 to avoid ENETUNREACH on IPv6-incompatible networks
-    family: 4,
-    lookup: (hostname, options, callback) => {
-      const dns = require("dns");
-      dns.resolve4(hostname, (err, addresses) => {
-        if (err) return callback(err);
-        callback(null, addresses[0], 4);
-      });
+    tls: {
+      rejectUnauthorized: false, // Allow self-signed certs on some cloud platforms
     },
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 15000,
+    // Force IPv4 DNS resolution with fallback
+    family: 4,
+    connectionTimeout: 15000,
+    greetingTimeout: 15000,
+    socketTimeout: 20000,
   });
 
 /** Send OTP email with branded template */
